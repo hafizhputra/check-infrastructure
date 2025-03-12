@@ -1,0 +1,117 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+/* NAVBAR, SIDE BAR, DAN FOOTER */
+
+
+/* Styling Navbar */
+.navbar {
+  background-color: #f48120;
+}
+
+.navbar-brand {
+  color: #ffffff;
+}
+
+/* Styling Sidebar */
+#sidebar {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 56px; /* Sesuai tinggi navbar */
+  left: 0;
+  transition: 0.3s;
+  padding-top: 10px;
+  background-color: #e0e0e0;
+}
+
+#sidebar.hide {
+  width: 0;
+  overflow: hidden;
+}
+
+.nav-item {
+  background-color: #696969;
+  color: #e0e0e0;
+}
+
+/* Sidebar Menu */
+#sidebar .nav-link {
+  padding: 10px 15px;
+  color: #ffffff;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Efek Hover (Menu Nyala) */
+#sidebar .nav-link:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Content */
+#content {
+  margin-left: 250px;
+  transition: 0.3s;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  padding-top: 56px;
+}
+
+#sidebar.hide + #content {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f48120;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #sidebar {
+    width: 0;
+    overflow: hidden;
+  }
+
+  #content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+
+/* NAVBAR, SIDE BAR, DAN FOOTER */
+
+
+/*      menampilkan data      */
+
+
+.table-container {
+  margin-top: -30px;
+}
+
+.table th, .table td {
+  text-align: center;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.pagination-container {
+  margin-top: 2px;
+}
+
+
+
+/*      menampilkan data penutup      */

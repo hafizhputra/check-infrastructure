@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulir Pengisian ke Google Sheets</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    <style>
+      .form-container {
+        max-width: 500px;
+        margin: auto;
+        margin-top: 50px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <!-- Formulir untuk input data -->
+      <div class="form-container">
+        <h4 class="text-center mb-4">Form Check Infrastruktur</h4>
+        <form id="submit-to-google-sheet">
+          <div class="form-group">
+            <label for="nama_pic">Nama PIC :</label>
+            <input class="form-control" type="text" name="nama_pic" id="nama_pic" placeholder="Nama PIC" required />
+          </div>
+
+          <div class="form-group">
+            <label for="jam_kerja">Jam Kerja :</label>
+            <select class="form-control" name="jam_kerja" id="jam_kerja" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Pagi">Pagi</option>
+              <option value="Sore">Sore</option>
+              <option value="Malam">Malam</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pac">PAC :</label>
+            <select class="form-control" name="pac" id="pac" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Ok">Ok</option>
+              <option value="Not Ok">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fm200">FM200 :</label>
+            <select class="form-control" name="fm200" id="fm200" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Ok">Ok</option>
+              <option value="Not Ok">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ups">UPS :</label>
+            <select class="form-control" name="ups" id="ups" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Ok">Ok</option>
+              <option value="Not Ok">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fan_rack">Fan Rack :</label>
+            <select class="form-control" name="fan_rack" id="fan_rack" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Ok">Ok</option>
+              <option value="Not Ok">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="lampu">Lampu :</label>
+            <select class="form-control" name="lampu" id="lampu" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Ok">Ok</option>
+              <option value="Not Ok">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="termometer">Termometer :</label>
+            <select class="form-control" name="termometer" id="termometer" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Ok">Ok</option>
+              <option value="Not Ok">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="rack">Rack :</label>
+            <select class="form-control" name="rack" id="rack" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Ok">Ok</option>
+              <option value="Not Ok">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mmr">MMR :</label>
+            <select class="form-control" name="mmr" id="mmr" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Ok">Ok</option>
+              <option value="Not Ok">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="kondisi">Kondisi :</label>
+            <select class="form-control" name="kondisi" id="kondisi" required>
+              <option value="" disabled selected hidden>Pilih...</option>
+              <option value="Normal">Normal</option>
+              <option value="Not Normal">Not Ok</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="loc">Keterangan :</label>
+            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" required></textarea>
+
+            <div class="form-group form-check mt-2">
+              <input class="form-check-input" type="checkbox" id="age"  required />
+              <label class="form-check-label" for="age">Check if you are not a bot</label>
+            </div>
+            <div class="form-group form-check">
+              <input class="form-check-input" type="checkbox" id="ex" required />
+              <label class="form-check-label" for="ex">By checking this box, I certify that the data entered is correct.. </label>
+            </div>
+          
+
+          <button type="submit" class="btn btn-primary btn-block">Kirim</button>
+        </form>
+      </div>
+      <a href="index.html" style="text-decoration: none"> <button class="btn btn-warning btn-block">Kembali</button></a>
+    </div>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyHI1klxGMxnhH9Gjko6Yk67kGORtqOKKBW8aahb3PxCCOtgy7wDzjq3ij1e2eFs256HQ/exec';
+      const form = document.forms['submit-to-google-sheet'];
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        var ex = document.getElementById('ex').checked;
+
+        if (ex) {
+          formData.append('ex', 'Ya');
+        } else {
+          formData.append('ex', 'Tidak');
+        }
+
+        var age = document.getElementById('age').checked;
+
+        if (age) {
+          formData.append('age', 'Ya');
+        } else {
+          formData.append('age', 'Tidak');
+        }
+     
+
+        fetch(scriptURL, { method: 'POST', body: formData })
+          .then((response) => {
+            swal('Selesai', 'Pengiriman Berhasil.', 'success');
+            form.reset();
+          })
+          .catch((error) => {
+            swal('Error', 'Terjadi kesalahan. Silakan coba lagi!', 'error');
+          });
+      });
+    </script>
+  </body>
+</html>
